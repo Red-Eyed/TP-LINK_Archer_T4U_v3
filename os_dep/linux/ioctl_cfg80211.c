@@ -686,16 +686,21 @@ static int rtw_cfg80211_sync_iftype(_adapter *adapter)
 
 static u64 rtw_get_systime_us(void)
 {
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 39))
-	struct timespec ts;
-	get_monotonic_boottime(&ts);
-	return ((u64)ts.tv_sec * 1000000) + ts.tv_nsec / 1000;
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 20, 0))
+         u64 ts;
+         ts = ktime_get_boottime();
+         return do_div(ts, 1000);
+#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 39))
+         struct timespec ts;
+         get_monotonic_boottime(&ts);
+         return ((u64)ts.tv_sec * 1000000) + ts.tv_nsec / 1000;
 #else
-	struct timeval tv;
-	do_gettimeofday(&tv);
-	return ((u64)tv.tv_sec * 1000000) + tv.tv_usec;
+         struct timeval tv;
+         do_gettimeofday(&tv);
+         return ((u64)tv.tv_sec * 1000000) + tv.tv_usec;
 #endif
 }
+
 
 /* Try to remove non target BSS's SR to reduce PBC overlap rate */
 static int rtw_cfg80211_clear_wps_sr_of_non_target_bss(_adapter *padapter, struct wlan_network *pnetwork, struct cfg80211_ssid *req_ssid)
