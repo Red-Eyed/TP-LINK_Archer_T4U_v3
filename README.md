@@ -1,3 +1,9 @@
+I don't maintain this repository anymore.  
+I use wired connection and don't need wifi.  
+Also, due to COVID-19 I'm working from home and have no access to that device.  
+Maybe one day I will try to build the drive on the latest kernel, but it's very unlikely.  
+However, any PR will be reviewed.  
+
 ## How to install the driver (Ubuntu 19.04):
 1. Download sources:  
 `git clone https://github.com/Red-Eyed/TP-LINK_Archer_T4U_v3.git`  or [Download zip](https://github.com/Red-Eyed/TP-LINK_Archer_T4U_v3/archive/master.zip)
