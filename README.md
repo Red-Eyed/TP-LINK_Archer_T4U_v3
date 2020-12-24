@@ -1,7 +1,7 @@
 I don't maintain this repository anymore.  
 I use wired connection and don't need wifi.  
 Also, due to COVID-19 I'm working from home and have no access to that device.  
-Maybe one day I will try to build the drivee on the latest kernel, but it's very unlikely.  
+Maybe one day I will try to build the driver on the latest kernel, but it's very unlikely.  
 However, I welcome any PR.  
 
 ## How to install the driver (Ubuntu 19.04):
